@@ -16,7 +16,7 @@ DEBUG=True
 
 Затем запустить командой
 ```
-sudo docker-compose up
+docker-compose up --build
 ```
 
 ## Задание и решение
