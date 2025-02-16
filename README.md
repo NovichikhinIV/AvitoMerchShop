@@ -97,3 +97,8 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
+```
+Далее добавляем pre-commit в Git-хуки. Теперь перед каждым git commit будут выполняться проверки:
+```
+pre-commit install
+```
