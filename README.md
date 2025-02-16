@@ -6,6 +6,7 @@
 ```
 cd merch_service
 cp .env.example .env
+cd ..
 ```
 
 Затем запустить командой
