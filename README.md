@@ -11,7 +11,7 @@ cd ..
 
 Затем запустить командой
 ```
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 ## Задание и решение
