@@ -3,21 +3,24 @@ repos:
     hooks:
       - id: isort
         name: isort
-        entry: isort --settings-file ./.isort.cfg .
+        entry: isort --settings-file ./merch_service/.isort.cfg .
         language: system
         types: [python]
         pass_filenames: false
+        files: "^merch_service/.*\\.py$"
 
       - id: black
         name: black
-        entry: black --config ./pyproject.toml .
+        entry: black --config ./merch_service/pyproject.toml .
         language: system
         types: [python]
         pass_filenames: false
+        files: "^merch_service/.*\\.py$"
 
       - id: flake8
         name: flake8
-        entry: flake8 --config ./.flake8 .
+        entry: flake8 --config ./merch_service/.flake8 .
         language: system
         types: [python]
         pass_filenames: false
+        files: "^merch_service/.*\\.py$"

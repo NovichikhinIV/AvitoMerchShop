@@ -1,4 +1,4 @@
 [flake8]
 max-line-length = 80
-exclude = .git,__pycache__,venv,__init__.py
+exclude = .git,__pycache__,venv,__init__.py,node_modules
 ignore = E203, E266, E501, W503

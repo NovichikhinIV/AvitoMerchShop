@@ -23,8 +23,12 @@ class TransactionService:
                         "error": "Невозможно перевести монеты самому себе"
                     }, 400
 
-                from_profile = get_object_or_404(UserProfile, user=from_user)
-                to_profile = get_object_or_404(UserProfile, user=to_user)
+                from_profile = UserProfile.objects.select_for_update().get(
+                    user=from_user
+                )
+                to_profile = UserProfile.objects.select_for_update().get(
+                    user=to_user
+                )
 
                 if from_profile.balance < amount:
                     return {"error": "Недостаточно монет"}, 400
@@ -52,13 +56,14 @@ class PurchaseService:
     @staticmethod
     def buy_item(user, item_id):
         product = get_object_or_404(Product, id=item_id)
-        profile = get_object_or_404(UserProfile, user=user)
-
-        if profile.balance < product.price:
-            return {"error": "Недостаточно монет"}, 400
 
         try:
             with transaction.atomic():
+                profile = UserProfile.objects.select_for_update().get(user=user)
+
+                if profile.balance < product.price:
+                    return {"error": "Недостаточно монет"}, 400
+
                 profile.balance -= product.price
                 profile.save()
 
