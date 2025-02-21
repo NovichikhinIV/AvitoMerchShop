@@ -14,6 +14,11 @@ cd ..
 docker-compose up --build -d
 ```
 
+Запуск тестов:
+```
+docker-compose exec merch_backend python manage.py test shop.tests
+```
+
 ## Задание и решение
 
 задание описано в файле task.md
